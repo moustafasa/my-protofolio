@@ -1,0 +1,27 @@
+@use "../helpers/mixins" as *;
+@use "../variables/colors" as *;
+@use "../variables/dimensions" as *;
+.page-head {
+  margin: 0 20px $padding-top;
+  text: {
+    align: center;
+    transform: capitalize;
+  }
+  color: black;
+  font-size: 30px;
+  border: 1px solid $main-color;
+  padding: 10px 0;
+}
+
+.main-head {
+  @include centerbyposition("both", absolute);
+  margin: 0;
+  text-transform: uppercase;
+  border: 1px solid $white-color;
+  padding: 10px 15px;
+  color: $white-color;
+  @include head-slide-animation("time organiser", $third-color);
+  span {
+    opacity: 0;
+  }
+}

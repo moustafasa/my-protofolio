@@ -1,0 +1,87 @@
+@use "../../helpers/mixins" as *;
+@use "../../variables/colors" as *;
+@use "../../variables/paths" as *;
+
+// start landing
+.landing {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-color: $second-color;
+  color: white;
+  .img {
+    @include centerbyposition("both", absolute);
+    @include centerbyflex(null);
+    top: calc(50% + 20px);
+    flex-direction: column;
+    width: 100%;
+    img {
+      display: block;
+      @include circle(400px);
+      overflow: hidden;
+      object-fit: cover;
+    }
+    &::after {
+      content: "moustafa saad";
+      margin-top: 50px;
+      font-weight: bold;
+      font-size: 100px;
+      background: {
+        image: url($imgs + "/landing.jpg");
+        size: 50% 50%;
+        clip: text;
+        size: cover;
+        repeat: no-repeat;
+      }
+      -webkit-background-clip: text;
+      color: transparent;
+      text-transform: capitalize;
+      text-align: center;
+    }
+  }
+
+  nav {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background-color: white;
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: black;
+      height: 70px;
+      h1.main-head {
+        padding: 15px;
+        margin: 0;
+        display: flex;
+        gap: 20px;
+        text-transform: capitalize;
+        span {
+          display: block;
+        }
+      }
+      ul {
+        display: flex;
+        column-gap: 20px;
+        li {
+          a {
+            display: block;
+            display: flex;
+            align-items: center;
+            height: 70px;
+            color: inherit;
+            padding: 10px;
+            text-transform: capitalize;
+            transition: 0.5s;
+            &:hover {
+              background-color: $main-color;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+// end landing

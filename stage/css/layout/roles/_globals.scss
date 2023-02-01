@@ -1,0 +1,60 @@
+@use "../../helpers/mixins" as *;
+
+// start design roles
+
+// font
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap");
+*,
+*::after,
+*::before {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Ubuntu", sans-serif;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+img {
+  max-width: 100%;
+}
+
+// start container roles
+.container {
+  padding-inline: 15px;
+  margin-inline: auto;
+}
+
+/* Small */
+@include medias("more mobile") {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium */
+@include medias("more small") {
+  .container {
+    width: 970px;
+  }
+}
+@include medias("large") {
+  .container {
+    width: 1170px;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* end global rules  */
