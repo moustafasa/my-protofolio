@@ -66,12 +66,22 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   top: calc(50% + 20px);
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
 }
 .landing .img img {
@@ -80,7 +90,8 @@ img {
   height: 400px;
   border-radius: 50%;
   overflow: hidden;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .landing .img::after {
   content: "moustafa saad";
@@ -104,15 +115,23 @@ img {
   background-color: white;
 }
 .landing nav .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   color: black;
   height: 70px;
 }
 .landing nav .container h1.main-head {
   padding: 15px;
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 20px;
   text-transform: capitalize;
@@ -121,22 +140,30 @@ img {
   display: block;
 }
 .landing nav .container ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  column-gap: 20px;
+  -webkit-column-gap: 20px;
+     -moz-column-gap: 20px;
+          column-gap: 20px;
 }
 .landing nav .container ul li a {
   display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 70px;
   color: inherit;
   padding: 10px;
   text-transform: capitalize;
+  -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 .landing nav .container ul li a:hover {
   background-color: #00bcd4;
   color: white;
 }
-
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=maps/main.css.map */
