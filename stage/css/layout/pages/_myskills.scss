@@ -1,0 +1,23 @@
+@use "../../variables/colors" as *;
+@use "../../variables/dimensions" as *;
+@use "../../helpers/mixins" as *;
+
+.my-skills {
+  padding-top: $section-padding;
+  .container {
+    padding-block: $section-padding;
+    ul {
+      @include flex-gap(30px);
+      li {
+        h3 {
+          line-height: 1.9;
+          text-transform: uppercase;
+        }
+        .progress {
+          width: 100%;
+          height: 40px;
+        }
+      }
+    }
+  }
+}

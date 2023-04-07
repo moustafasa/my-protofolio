@@ -5,24 +5,106 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>my protofolio</title>
-    <link rel="stylesheet" href="../css/pages/all.min.css">
-    <link rel="stylesheet" href="../css/pages/normalize.css">
-    <link rel="stylesheet" href="../css/pages/main.css">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/main.css">
   </head>
   <body>
-    <div class="landing"> 
-      <div class="div img"> <img src="../img/landing.jpg" alt=""></div>
+    <div class="landing">
+      <div class="container">
+        <div class="info">
+          <h1><span>welcome,</span> i am a front end web developer</h1>
+          <p>let's take a tower in my protofolio </p>
+          <button><i class="fa-solid fa-angles-down"></i></button>
+        </div>
+        <figure>
+          <div class="img"><img src="./img/landing.png" alt=""></div>
+          <figcaption>hello i am moustafa saad</figcaption>
+        </figure>
+      </div>
       <nav> 
         <div class="container">
-          <h1 class="main-head"> <span>protofolio</span></h1>
-          <ul> 
-            <li><a href="#">about</a></li>
-            <li><a href="#">myskills</a></li>
-            <li><a href="#">my projects</a></li>
-            <li><a href="#">contact me</a></li>
-          </ul>
+          <h2 class="logo"> <span>moustafa</span></h2>
+          <div class="left">
+            <button class="mobile"><i class="fa-solid fa-bars"></i></button>
+            <ul> 
+              <li><a href="#">about</a></li>
+              <li><a href="#">myskills</a></li>
+              <li><a href="#">my projects</a></li>
+              <li><a href="#">contact me</a></li>
+            </ul>
+          </div>
         </div>
       </nav>
     </div>
+    <section class="about" id="about">
+      <h2 class="section-head">about</h2>
+      <div class="container"> 
+        <div class="img"><img src="./img/about.jpeg" alt=""></div>
+        <div class="content"> 
+          <h3>who am i ?</h3>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, temporibus ut minus suscipit iste vel voluptas accusamus aliquid ex eaque similique ab, accusantium itaque earum iure velit laboriosam et dolore Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nesciunt, dolor. Reprehenderit, illum at. Eveniet delectus explicabo odit ab? Atque ex reprehenderit numquam tenetur enim odio aliquam a placeat molestiae nihil?</p>
+        </div>
+      </div>
+    </section>
+    <section class="my-skills" id="my-skills">
+      <h2 class="section-head">myskills</h2>
+      <div class="container"> 
+        <ul>
+          <li>
+            <h3>html </h3>
+            <div class="progress"></div>
+          </li>
+          <li>
+            <h3>css </h3>
+            <div class="progress"></div>
+          </li>
+          <li>
+            <h3>js </h3>
+            <div class="progress"></div>
+          </li>
+          <li>
+            <h3>sass </h3>
+            <div class="progress"></div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <div class="my-projects" id="my-projects">
+      <h2 class="section-head">my projects</h2>
+      <div class="container"> 
+        <div class="show">
+          <iframe src="https://www.google.com" frameborder="0"> </iframe>
+        </div>
+        <ul class="list">
+          <li><img src=""></li>
+          <li><img src=""></li>
+          <li><img src=""></li>
+          <li><img src=""></li>
+          <li><img src=""></li>
+        </ul>
+      </div>
+    </div>
+    <section class="contact-me" id="contact-me"> 
+      <div class="container">
+        <div class="info"> 
+          <h2 class="section-head">contact me</h2>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minus rerum aut doloribus laborum fugit excepturi molestiae, quod temporibus pariatur, illum ullam voluptas adipisci quia perspiciatis, ipsam id reprehenderit quos consequatur.</p>
+          <ul class="methods"> 
+            <li>
+              <h3>email</h3>
+            </li>
+            <li>
+              <h3>phone</h3>
+            </li>
+          </ul>
+        </div>
+        <form action=""> 
+          <input type="text" name="name" placeholder="enter your name">
+          <input type="text" name="email" placeholder="enter valid email">
+          <textarea id="msg" name="msg" cols="30" rows="10" placeholder="enter your msg"> </textarea>
+        </form>
+      </div>
+    </section>
   </body>
 </html>

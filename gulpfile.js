@@ -8,7 +8,9 @@ const { series, parallel, dest, src, watch } = require("gulp"),
   connect = require("gulp-connect"),
   cleanCss = require("gulp-clean-css"),
   notify = require("gulp-notify"),
+  plumber = require("gulp-plumber"),
   zip = require("gulp-zip"),
+  open = require("open"),
   ghPages = require("gulp-gh-pages");
 // htmlMin = require("gulp-htmlmin");
 
@@ -21,17 +23,18 @@ let cssPath = { src: "./dist/css/*.css", dest: "./dist/css/min" };
 // tasks
 function sassTask(cb) {
   src(sassPath.src + "*.*")
+    .pipe(plumber())
     .pipe(maps.init({ largeFile: true }))
     .pipe(sass().on("error", sass.logError))
-    .pipe(prefixer("last 2 versions"))
+    // .pipe(prefixer("last 2 versions"))
     .pipe(maps.write("./maps"))
     .pipe(dest(sassPath.dest))
-    .pipe(connect.reload())
-    .pipe(notify("css done"));
+    .pipe(connect.reload());
   cb();
 }
 function minifycss(cb) {
   src(cssPath.src, { sourcemaps: true })
+    .pipe(plumber())
     .pipe(cleanCss())
     .pipe(rename({ extname: ".min.css" }))
     .pipe(dest(cssPath.dest, { sourcemaps: "./maps" }))
@@ -40,28 +43,25 @@ function minifycss(cb) {
 }
 function html(cb) {
   src(pugPath.src)
+    .pipe(plumber())
     .pipe(pug({ pretty: true }))
     .pipe(dest(pugPath.dest))
-    .pipe(connect.reload())
-    .pipe(notify("html done"));
+    .pipe(connect.reload());
   cb();
 }
 
 function js(cb) {
   src(jsPath.src)
+    .pipe(plumber())
     .pipe(uglify())
     .pipe(dest(jsPath.dest))
-    .pipe(connect.reload())
-    .pipe(notify("js done"));
+    .pipe(connect.reload());
   cb();
 }
 
-function deploy(cb) {
-  src("./**").pipe(ghPages({ branch: "main" }));
-  cb();
-}
 function watchTask(cb) {
-  connect.server({ root: "./dist", livereload: true, port: 7000 });
+  connect.server({ root: "./dist", livereload: true, port: 8080 });
+  open("http://localhost:8080");
   watch(["./stage/css/**"], { ignoreInitial: false }, series(sassTask));
   watch(["./stage/html/**"], { ignoreInitial: false }, series(html));
   watch(["./stage/js/**"], { ignoreInitial: false }, series(js));

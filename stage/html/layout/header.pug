@@ -1,13 +1,22 @@
-.landing 
-    .div.img 
-        img(src=`${imgPath}/landing.jpg`, alt="")
+.landing
+    .container
+        .info
+            h1 #[span welcome,] i am a front end web developer
+            p let's take a tower in my protofolio 
+            button #[i(class="fa-solid fa-angles-down")]
+        figure
+            .img
+                img(src=`${imgPath}/landing.png`, alt="")
+            figcaption hello i am moustafa saad
 
     nav 
         .container
-            h1.main-head  
-                span protofolio
-            ul 
-                li #[a(href='#') about]
-                li #[a(href='#') myskills]
-                li #[a(href='#') my projects]
-                li #[a(href='#') contact me]
+            h2.logo  
+                span moustafa
+            .left
+                button.mobile #[i(class="fa-solid fa-bars")]
+                ul 
+                    li #[a(href='#') about]
+                    li #[a(href='#') myskills]
+                    li #[a(href='#') my projects]
+                    li #[a(href='#') contact me]

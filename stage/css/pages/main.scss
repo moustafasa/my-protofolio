@@ -1,4 +1,8 @@
 @use "../layout/roles/globals";
 @use "../layout/roles/header";
 @use "../layout/roles/footer";
-@use "../layout/pages/main";
+@use "../components/heads";
+@use "../layout/pages/about";
+@use "../layout/pages/myskills";
+@use "../layout/pages/myprojects";
+@use "../layout/pages/contact";

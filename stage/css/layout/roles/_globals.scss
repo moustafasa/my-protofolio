@@ -1,4 +1,5 @@
 @use "../../helpers/mixins" as *;
+@use "../../variables/colors" as *;
 
 // start design roles
 
@@ -9,6 +10,7 @@
 *::before {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  margin: 0;
 }
 
 html {
@@ -16,7 +18,10 @@ html {
 }
 body {
   font-family: "Ubuntu", sans-serif;
+  background-color: $main-color;
+  color: $white-color;
 }
+
 a {
   text-decoration: none;
 }
@@ -31,7 +36,7 @@ img {
 
 // start container roles
 .container {
-  padding-inline: 15px;
+  padding-inline: 20px;
   margin-inline: auto;
 }
 

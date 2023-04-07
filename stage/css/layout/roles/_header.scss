@@ -4,79 +4,242 @@
 
 // start landing
 .landing {
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  background-color: $second-color;
-  color: white;
-  .img {
-    @include centerbyposition("both", absolute);
-    @include centerbyflex(null);
-    top: calc(50% + 20px);
-    flex-direction: column;
-    width: 100%;
-    img {
-      display: block;
-      @include circle(400px);
-      overflow: hidden;
-      object-fit: cover;
+  $nav-height: 70px;
+
+  color: $white-color;
+  > .container {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    gap: 20px;
+    padding-top: $nav-height;
+    @include medias("mobile") {
+      flex-direction: column-reverse;
+      padding-top: $nav-height + 50px;
+      gap: 50px;
+      padding-bottom: 50px;
     }
-    &::after {
-      content: "moustafa saad";
-      margin-top: 50px;
-      font-weight: bold;
-      font-size: 100px;
-      background: {
-        image: url($imgs + "/landing.jpg");
-        size: 50% 50%;
-        clip: text;
-        size: cover;
-        repeat: no-repeat;
+    figure {
+      margin: 0;
+      position: relative;
+      z-index: 1;
+      .img {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &::before {
+          content: "";
+          top: 0px;
+          background-color: $forth-color;
+          z-index: -1;
+          border: 2px solid white;
+          @include centerbyposition("horizontal", absolute);
+          @include circle(30vw);
+          @include one-value-more-properties(100%, max-width, max-height);
+          @include medias("mobile") {
+            @include one-value-more-properties(60vw, width, height);
+          }
+        }
+        img {
+          width: 500px;
+          @include medias("mobile") {
+            width: 350px;
+          }
+        }
       }
-      -webkit-background-clip: text;
-      color: transparent;
-      text-transform: capitalize;
-      text-align: center;
+      figcaption {
+        text-align: center;
+        padding: 20px;
+        font-size: 30px;
+        text-transform: capitalize;
+      }
+    }
+    .info {
+      @include medias("mobile") {
+        text-align: center;
+      }
+      h1 {
+        line-height: 1.5;
+        text-transform: uppercase;
+        margin: 0;
+        span {
+          display: block;
+          font-size: 40px;
+          color: $forth-color;
+        }
+      }
+      p {
+        font-size: 20px;
+        color: #888;
+        text-transform: capitalize;
+        line-height: 1.7;
+        padding-block: 20px;
+      }
+      button {
+        display: block;
+        margin-left: 15%;
+        background-color: transparent;
+        border: 2px solid;
+        padding: 10px 20px;
+        outline: none;
+        cursor: pointer;
+        transition: 0.5s;
+        margin-top: 5px;
+        @include one-value-more-properties($third-color, border-color, color);
+        @include medias("mobile") {
+          margin-inline: auto;
+        }
+        &:hover {
+          @include one-value-more-properties($forth-color, border-color, color);
+          scale: 1.2;
+          box-shadow: 0 0 10px $second-color;
+        }
+        i {
+          font-size: 20px;
+        }
+      }
     }
   }
-
   nav {
-    width: 100%;
-    position: fixed;
+    position: absolute;
     top: 0;
-    background-color: white;
+    left: 0;
+    width: 100%;
+    background-color: $second-color;
+    border-bottom: 1px solid $white-color;
+    z-index: 10000;
     .container {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      color: black;
-      height: 70px;
-      h1.main-head {
-        padding: 15px;
+      h2.logo {
         margin: 0;
-        display: flex;
-        gap: 20px;
-        text-transform: capitalize;
+        height: $nav-height;
+        @include centerbyflex("vertical");
         span {
+          color: $white-color;
+          text-transform: uppercase;
           display: block;
+          &::first-letter {
+            font-size: 30px;
+            padding: 5px;
+            background-color: $third-color;
+          }
         }
       }
-      ul {
-        display: flex;
-        column-gap: 20px;
-        li {
-          a {
-            display: block;
-            display: flex;
-            align-items: center;
-            height: 70px;
-            color: inherit;
-            padding: 10px;
-            text-transform: capitalize;
+      .left {
+        .mobile {
+          @include medias("more mobile") {
+            display: none;
+          }
+          background-color: $second-color;
+          border: none;
+          outline: none;
+          color: white;
+          font-size: 25px;
+          cursor: pointer;
+          transition: 0.5s;
+          height: $nav-height;
+          aspect-ratio: 1;
+          position: relative;
+          &::before,
+          &::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            bottom: 0;
+            border: 3px solid;
+            z-index: -1;
             transition: 0.5s;
-            &:hover {
-              background-color: $main-color;
-              color: white;
+          }
+          &::before {
+            left: 10px;
+            border-color: rgb(214, 214, 214) rgb(214, 214, 214) transparent
+              transparent;
+            translate: -100%;
+          }
+          &::after {
+            right: 10px;
+            border-color: white transparent transparent white;
+            translate: 100%;
+          }
+          &:hover,
+          &.active {
+            background-color: $white-color;
+            color: $third-color;
+            scale: 1.2;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.355);
+            &::after {
+              right: 0;
+            }
+            &::before {
+              left: 0;
+            }
+            &::after,
+            &::before {
+              z-index: 1000;
+            }
+          }
+        }
+        ul {
+          @include medias("mobile") {
+            position: absolute;
+            left: -1000vw;
+            visibility: hidden;
+            z-index: -1;
+            top: calc(100% + 5px);
+            flex-direction: column;
+            width: 100%;
+            padding-inline: 25px;
+            background-color: $second-color;
+            border-top: 1px solid $white-color;
+            transition: 0.5s;
+            &::before {
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 0px;
+              width: 0%;
+              height: 3px;
+              background-color: $white-color;
+              translate: 0 calc(-100% - 1.5px);
+              transition: 0.5s 0.5s;
+            }
+            &.open {
+              visibility: visible;
+              left: 0;
+              z-index: 15;
+
+              &::before {
+                width: 100%;
+              }
+            }
+          }
+          display: flex;
+          gap: 30px;
+          @include medias("small") {
+            gap: 15px;
+          }
+          text-transform: capitalize;
+          li {
+            a {
+              color: $white-color;
+              padding: 10px;
+              transition: 0.5s;
+              font-size: 18px;
+              @include medias("small") {
+                font-size: 16px;
+              }
+              height: $nav-height;
+              @include centerbyflex("vertical");
+              &:hover,
+              &.active {
+                background-color: $third-color;
+                scale: 1.1;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.355);
+              }
             }
           }
         }

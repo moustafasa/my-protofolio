@@ -1,4 +1,6 @@
-﻿@mixin animation($name) {
+﻿@use "sass:meta";
+@use "sass:map";
+@mixin animation($name) {
   @-webkit-keyframes #{$name} {
     @content;
   }
@@ -46,11 +48,12 @@
 @mixin arrow($pos, $width, $dir, $color) {
   @if ($dir == "top") {
     position: absolute;
-    top: -$width * 2;
+    top: 0;
     right: $pos;
     border: $width solid {
       color: transparent transparent $color;
     }
+    transform: translateY(-100%);
   } @else if ($dir == "bottom") {
     position: absolute;
     bottom: -$width * 2;
@@ -75,8 +78,8 @@
   }
 }
 
-@mixin centerbyflex($dir) {
-  display: flex;
+@mixin centerbyflex($dir, $display: flex) {
+  display: $display;
   @if ($dir == null) {
     justify-content: center;
     align-items: center;
@@ -87,7 +90,7 @@
   }
 }
 
-@mixin centerbyposition($dir, $pos) {
+@mixin centerbyposition($dir, $pos: null) {
   position: $pos;
   @if ($dir == "both") {
     top: 50%;
@@ -122,13 +125,33 @@
   gap: $gap;
 }
 
-@mixin overlay($color, $pos, $width, $height) {
+@mixin position(
+  $color: null,
+  $pos: null,
+  $width: null,
+  $height: null,
+  $dir...
+) {
   position: $pos;
-  top: 0;
-  left: 0;
   width: $width;
   height: $height;
   background-color: $color;
+  @each $key, $value in meta.keywords($dir) {
+    #{$key}: $value;
+  }
+}
+
+@mixin beforeBorder($color, $width, $height, $transition: null) {
+  &::before {
+    content: "";
+    @include position($color, absolute, $width, $height, $top: 0, $left: 0);
+    transition: $transition;
+  }
+}
+@mixin oneValue($selector, $prop, $value) {
+  #{$selector} {
+    #{$prop}: $value;
+  }
 }
 
 @mixin addIcon($code) {
@@ -148,28 +171,26 @@
   &::after {
     content: $content;
     position: absolute;
+    top: 0;
     transition: 0.5s;
     width: 100%;
     height: 100%;
-    padding: inherit;
     text-align: center;
+    padding: inherit;
   }
-  &::after {
-    top: 0;
-    right: 0;
-  }
-  &:hover::after {
-    right: -100%;
-  }
-
-  &::before {
-    top: 0;
-    left: -100%;
-  }
+  @include oneValue("&::after", right, 0);
+  @include oneValue("&:hover:after", right, -100%);
+  @include oneValue("&::before", left, -100%);
   &:hover::before {
     left: 0;
     @if ($color !=null) {
       color: $color;
     }
   }
+}
+
+@mixin flex-gap($gap, $display: flex) {
+  display: $display;
+  flex-direction: column;
+  gap: $gap;
 }
