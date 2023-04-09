@@ -113,7 +113,7 @@
 
 @mixin loopColors($list, $property) {
   @each $class, $color in $list {
-    .#{$class} {
+    #{$class} {
       #{$property}: $color;
     }
   }

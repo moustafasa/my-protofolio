@@ -1,17 +1,20 @@
 section.my-skills#my-skills
     h2.section-head myskills
     .container 
+        mixin skill(name,logo,prog,img=false)
+            li(class=name style=`--skill-prog:${prog}`)
+                .label 
+                    - if(img)
+                        img(src=logo)
+                    - else
+                        i(class=`${logo} fa-4x`)
+                    h3=name
+                .progress 
+                    span(data-prog=`${prog}`)
         ul
-            li
-                h3 html 
-                div.progress
-            li
-                h3 css 
-                div.progress
-            li
-                h3 js 
-                div.progress
-            li
-                h3 sass 
-                div.progress
-        
+            +skill('html',`fa-brands fa-html5`,'68%')
+            +skill('css',`fa-brands fa-css3-alt`,'93%')
+            +skill('js',`fa-brands fa-js`,'98%')
+            +skill('sass',`fa-brands fa-sass`,'88%')
+            +skill('gulp',`fa-brands fa-gulp`,'53%')
+            +skill('pug',`${imgPath}/pug.png`,'100%',true)

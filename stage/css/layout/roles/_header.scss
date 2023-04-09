@@ -31,7 +31,7 @@
         &::before {
           content: "";
           top: 0px;
-          background-color: $forth-color;
+          background-color: $green-3-color;
           z-index: -1;
           border: 2px solid white;
           @include centerbyposition("horizontal", absolute);
@@ -66,7 +66,7 @@
         span {
           display: block;
           font-size: 40px;
-          color: $forth-color;
+          color: $green-3-color;
         }
       }
       p {
@@ -86,14 +86,18 @@
         cursor: pointer;
         transition: 0.5s;
         margin-top: 5px;
-        @include one-value-more-properties($third-color, border-color, color);
+        @include one-value-more-properties($blue-3-color, border-color, color);
         @include medias("mobile") {
           margin-inline: auto;
         }
         &:hover {
-          @include one-value-more-properties($forth-color, border-color, color);
+          @include one-value-more-properties(
+            $green-3-color,
+            border-color,
+            color
+          );
           scale: 1.2;
-          box-shadow: 0 0 10px $second-color;
+          box-shadow: 0 0 10px $blue-2-color;
         }
         i {
           font-size: 20px;
@@ -106,7 +110,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background-color: $second-color;
+    background-color: $blue-2-color;
     border-bottom: 1px solid $white-color;
     z-index: 10000;
     .container {
@@ -124,7 +128,7 @@
           &::first-letter {
             font-size: 30px;
             padding: 5px;
-            background-color: $third-color;
+            background-color: $blue-3-color;
           }
         }
       }
@@ -133,7 +137,7 @@
           @include medias("more mobile") {
             display: none;
           }
-          background-color: $second-color;
+          background-color: $blue-2-color;
           border: none;
           outline: none;
           color: white;
@@ -168,7 +172,7 @@
           &:hover,
           &.active {
             background-color: $white-color;
-            color: $third-color;
+            color: $blue-3-color;
             scale: 1.2;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.355);
             &::after {
@@ -193,7 +197,7 @@
             flex-direction: column;
             width: 100%;
             padding-inline: 25px;
-            background-color: $second-color;
+            background-color: $blue-2-color;
             border-top: 1px solid $white-color;
             transition: 0.5s;
             &::before {
@@ -236,7 +240,7 @@
               @include centerbyflex("vertical");
               &:hover,
               &.active {
-                background-color: $third-color;
+                background-color: $blue-3-color;
                 scale: 1.1;
                 box-shadow: 0 0 10px rgba(0, 0, 0, 0.355);
               }

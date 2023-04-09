@@ -3,19 +3,75 @@
 @use "../../helpers/mixins" as *;
 
 .my-skills {
-  padding-top: $section-padding;
   .container {
     padding-block: $section-padding;
     ul {
-      @include flex-gap(30px);
+      @include grid(300px, 50px);
       li {
-        h3 {
-          line-height: 1.9;
-          text-transform: uppercase;
+        padding: 20px;
+        background-color: $green-1-color;
+        $colors: (
+          "&.html": $html5,
+          "&.css": $css,
+          "&.js": $js,
+          "&.sass": $sass,
+          "&.gulp": $gulp,
+          "&.pug": $pug,
+        );
+        @include loopColors($colors, --brand-color);
+        box-shadow: 0 0 10px rgba(var(--brand-color), 0.2);
+        border-radius: 6px;
+        transition: 0.5s;
+        @include medias("more mobile") {
+          &:hover {
+            scale: 1.15;
+            @include medias("less large") {
+              scale: 1.1;
+            }
+            translate: 0 -15px;
+            box-shadow: 0 0 10px rgba(var(--brand-color), 0.5);
+          }
+        }
+        .label {
+          @include flex-gap(10px);
+          margin-bottom: 20px;
+          text-align: center;
+          i {
+            color: rgb(var(--brand-color));
+          }
+          img {
+            width: 64px;
+            margin: auto;
+          }
+          h3 {
+            line-height: 1.9;
+            text-transform: uppercase;
+          }
         }
         .progress {
           width: 100%;
-          height: 40px;
+          height: 35px;
+          background-color: $black-color;
+          position: relative;
+          border-radius: 6px;
+          box-shadow: 0 0 10px $black-2-box-shadow;
+          span {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: var(--skill-prog);
+            height: 100%;
+            background-color: rgb(var(--brand-color));
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(var(--brand-color), 0.7);
+            &::after {
+              content: attr(data-prog);
+              @include centerbyposition("both", absolute);
+              color: $black-color;
+              font-weight: bold;
+            }
+          }
         }
       }
     }
