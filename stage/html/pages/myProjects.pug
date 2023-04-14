@@ -1,11 +1,19 @@
+mixin project(src,description)
+    li
+        img(src=src, alt="")
+        p.description= description
+
 .my-projects#my-projects
     h2.section-head my projects
-    .container 
-        .show
-            iframe(src="https://moustafasa.github.io/space-tourism-multi-page-website/" width='100%' height='300px') 
-        ul.list
-            li #[img(src='')]
-            li #[img(src='')]
-            li #[img(src='')]
-            li #[img(src='')]
-            li #[img(src='')]
+    .container
+        .present-place
+            .show
+                iframe(src="https://moustafasa.github.io/space-tourism-multi-page-website/") 
+                p.description ljfklasdjfkdsajkfdsalfjksda
+            ul.list
+                +project(`${imgPath}/project.png`,'space tourism project from frontend mentor')
+                +project(`${imgPath}/project.png`,'space tourism project from frontend mentor')
+                +project(`${imgPath}/project.png`,'space tourism project from frontend mentor')
+                +project(`${imgPath}/project.png`,'space tourism project from frontend mentor')
+                +project(`${imgPath}/project.png`,'space tourism project from frontend mentor')
+                +project(`${imgPath}/project.png`,'space tourism project from frontend mentor')
