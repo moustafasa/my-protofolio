@@ -1,9 +1,10 @@
 @use "../../variables/colors" as *;
 @use "../../helpers/mixins" as *;
+@use "../../variables/dimensions" as *;
 
 .my-projects {
   .container {
-    padding-block: 150px;
+    padding-block: $section-padding;
     .present-place {
       display: flex;
       height: 805px;

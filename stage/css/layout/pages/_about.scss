@@ -6,6 +6,7 @@
     display: flex;
     align-items: flex-start;
     padding-block: $section-padding;
+    padding-top: 60px;
     gap: 10%;
     @include medias("less small") {
       flex-direction: column;
